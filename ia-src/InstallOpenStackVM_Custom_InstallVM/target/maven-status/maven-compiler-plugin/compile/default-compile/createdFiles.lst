@@ -1,0 +1,8 @@
+org/opentosca/types/AbstractIAService.class
+org/opentosca/types/InstallOpenStackVM_Custom_InstallVM.class
+org/opentosca/types/OSUtilities.class
+org/opentosca/types/OpenStack4jAPI.class
+org/opentosca/types/CloudProviderAPIFactory.class
+org/opentosca/types/AwsAPI.class
+org/opentosca/types/ICloudProviderAPI.class
+org/opentosca/types/AwsUtilities.class
