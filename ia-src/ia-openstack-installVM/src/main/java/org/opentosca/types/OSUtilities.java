@@ -136,7 +136,7 @@ public class OSUtilities
 		return name;
 	}
 	
-	public static String CreateKeypair1(String token, String keypair) throws InterruptedException, IOException
+	public static String CreateKeypair1(JSONObject credentials, String token, String keypair) throws InterruptedException, IOException
 	{		
 		String keypair1 = "";
 		try
@@ -145,8 +145,11 @@ public class OSUtilities
 			nameJObject.put("name",keypair);
 			JSONObject keypairJObject=new JSONObject();
 			keypairJObject.put("keypair",nameJObject);
+			
+			JSONObject auth =  (JSONObject) credentials.get("auth");
+			String tenantId = (String) auth.get("tenantId");
 		
-			String response = PostMethod("http://129.69.209.127:8774/v2/dbada39fa35b40dc8d452c7d50ff2843/os-keypairs", keypairJObject, token);
+			String response = PostMethod("http://129.69.209.127:8774/v2/"+tenantId+"/os-keypairs", keypairJObject, token);
 			JSONObject jsonObj = (JSONObject) JSONValue.parseWithException(response.toString());
 		 	JSONObject keypairObj = (JSONObject) jsonObj.get("keypair");
 		 	Object keypair_name = keypairObj.get("name");

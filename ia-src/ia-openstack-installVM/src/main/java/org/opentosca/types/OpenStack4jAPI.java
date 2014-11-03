@@ -135,7 +135,7 @@ public class OpenStack4jAPI  implements ICloudProviderAPI
 			creds = (JSONObject)new JSONParser().parse(credentials);	
 			endspoints = (JSONObject)new JSONParser().parse(endpointsAPI);
 			String token = OSUtilities.GetToken(creds, endspoints);
-			kp = OSUtilities.CreateKeypair1(token, keypair);
+			kp = OSUtilities.CreateKeypair1(creds, token, keypair);
 		} 
 		catch (InterruptedException e) 
 		{
