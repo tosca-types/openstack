@@ -18,6 +18,37 @@ public class InstallOpenStackVM_Custom_InstallVM extends AbstractIAService {
 	@WebMethod
 	@SOAPBinding
 	@Oneway
+	public void TerminateVMbyServerId(
+		@WebParam(name="credentials", targetNamespace="http://types.opentosca.org/") String credentials,
+		@WebParam(name="endpointsAPI", targetNamespace="http://types.opentosca.org/") String endpointsAPI,
+		@WebParam(name="serverId", targetNamespace="http://types.opentosca.org/") String serverId
+	) {
+		// This HashMap holds the return parameters of this operation.
+		final HashMap<String,String> returnParameters = new HashMap<String, String>();
+		try 
+		{
+			ICloudProviderAPI CP = CloudProviderAPIFactory.createCP(endpointsAPI);
+			//String privKey = CP.GetKeypair(credentials, endpointsAPI, keypair);		
+			
+			CP.TerminateVM(credentials, endpointsAPI, serverId);
+					
+			returnParameters.put("success", "true");
+			
+			sendResponse(returnParameters);			
+		}		
+		catch (Exception npe) 
+		{
+			npe.printStackTrace();
+			System.out.println("npe.getClass:"+ npe.getClass());
+			sendFaultResponse("ws04", "General exception.");						
+		}		
+	}
+
+	
+	
+	@WebMethod
+	@SOAPBinding
+	@Oneway
 	public void InstallVMwithCustomKeypair(
 		@WebParam(name="credentials", targetNamespace="http://types.opentosca.org/") String credentials,
 		@WebParam(name="endpointsAPI", targetNamespace="http://types.opentosca.org/") String endpointsAPI,

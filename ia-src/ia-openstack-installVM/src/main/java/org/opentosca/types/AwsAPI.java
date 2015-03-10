@@ -63,7 +63,7 @@ public class AwsAPI implements ICloudProviderAPI
 	}
 
 	@Override
-	public void TerminateVM(JSONObject credentials, JSONObject endpointsAPI,
+	public void TerminateVM(String credentials, String endpointsAPI,
 			String serverId) {
 		// TODO Auto-generated method stub
 		

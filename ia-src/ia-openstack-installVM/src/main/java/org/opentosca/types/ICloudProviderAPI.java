@@ -10,7 +10,7 @@ public interface ICloudProviderAPI
 	
 	public void StartVM(String credentials, String endpointsAPI, String serverId) throws Exception;
 	
-	public void TerminateVM(JSONObject credentials, JSONObject endpointsAPI, String serverId);
+	public void TerminateVM(String credentials, String endpointsAPI, String serverId);
 	
 	public String GetImage(String credentials, String endpointsAPI, String imgName) throws Exception;
 	
