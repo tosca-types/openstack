@@ -6,6 +6,7 @@
 <xs:element name="InstallVMwithCustomImage" type="tns:InstallVMwithCustomImage"/>
 <xs:element name="InstallVMwithCustomKeypair" type="tns:InstallVMwithCustomKeypair"/>
 <xs:element name="InstallVMwithGeneratedKeypair" type="tns:InstallVMwithGeneratedKeypair"/>
+<xs:element name="TerminateVMbyServerId" type="tns:TerminateVMbyServerId"/>
 <xs:complexType name="InstallVMwithCustomFlavor">
     <xs:sequence>
       <xs:element form="qualified" minOccurs="0" name="credentials" type="xs:string"/>
@@ -14,6 +15,13 @@
       <xs:element form="qualified" minOccurs="0" name="minRAM" type="xs:string"/>
       <xs:element form="qualified" minOccurs="0" name="imageName" type="xs:string"/>
       <xs:element form="qualified" minOccurs="0" name="keypair" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="TerminateVMbyServerId">
+    <xs:sequence>
+      <xs:element form="qualified" minOccurs="0" name="credentials" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="endpointsAPI" type="xs:string"/>
+      <xs:element form="qualified" minOccurs="0" name="serverId" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="InstallVMwithCustomKeypair">
@@ -56,6 +64,10 @@
     <wsdl:part name="parameters" element="tns:InstallVMwithCustomFlavor">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="TerminateVMbyServerId">
+    <wsdl:part name="parameters" element="tns:TerminateVMbyServerId">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="InstallVMwithGeneratedKeypair">
     <wsdl:part name="parameters" element="tns:InstallVMwithGeneratedKeypair">
     </wsdl:part>
@@ -63,6 +75,10 @@
   <wsdl:portType name="InstallOpenStackVM_Custom_InstallVM">
     <wsdl:operation name="InstallVMwithCustomFlavor">
       <wsdl:input name="InstallVMwithCustomFlavor" message="tns:InstallVMwithCustomFlavor">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="TerminateVMbyServerId">
+      <wsdl:input name="TerminateVMbyServerId" message="tns:TerminateVMbyServerId">
     </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="InstallVMwithCustomKeypair">
@@ -83,6 +99,12 @@
     <wsdl:operation name="InstallVMwithCustomFlavor">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="InstallVMwithCustomFlavor">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="TerminateVMbyServerId">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="TerminateVMbyServerId">
         <soap:body use="literal"/>
       </wsdl:input>
     </wsdl:operation>
