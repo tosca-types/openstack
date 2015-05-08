@@ -144,6 +144,7 @@ public class InstallOpenStackVM_Custom_InstallVM extends AbstractIAService {
 		catch (ClientResponseException ex) 
 		{
 			System.out.println("ex.getClass:"+ ex.getClass());
+			ex.printStackTrace();
 			sendFaultResponse("ws03", "Server could not be created. Wrong values of flavor, image or keypair have been specified or floatingIp limit has exceeded");				
 		}
 		
